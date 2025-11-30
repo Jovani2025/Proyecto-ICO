@@ -82,15 +82,13 @@ void	Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 
 			bool PalabraEncontrada = false; 
 
-			for (int i = 0; i < iNumElementos; i++) { 
-
-				if (strcmp(szPalabras[i], szPalabraTemporal) == 0) {
-					PalabraEncontrada = true;
-					iEstadisticas[i]++; 
-					break;
-				}
-
-			}
+int i = 0;
+while (i < iNumElementos && !PalabraEncontrada){
+	if(strcmp(szPalabras[i], szPalabraTemporal)==0){
+		PalabraEncotrada = true;
+		iEstadisticas[i]++;
+			} i++;
+	}
 
 			if (PalabraEncontrada == false) {
 				if (iNumElementos < NUMPALABRAS) { 
