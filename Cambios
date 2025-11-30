@@ -251,20 +251,16 @@ void	ClonaPalabras(
 	}
 
 	
-	char abecedario[] = "zxcvbnmasdfghjklqwertyuiop"; 
-	int longitud_abecedario = strlen(abecedario); 
+for (int k = 0; k < longitud_abecedario; k++) {
+    for (int j = 0; j < longitud; j++) {
+        char respaldo[TAMTOKEN];
+        strcpy_s(respaldo, TAMTOKEN, szPalabraLeida);
+        respaldo[j] = abecedario[k];
+        strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, respaldo);
+        iNumSugeridas++;
+    }
+}
 
-	for (int j = 0; j < longitud; j++) { 
-
-		for (int k = 0; k < longitud_abecedario; k++) { 
-			char PalabraRespaldoDos[TAMTOKEN]; 
-			strcpy_s(PalabraRespaldoDos, TAMTOKEN, szPalabraLeida); 
-			PalabraRespaldoDos[j] = abecedario[k]; 
-			strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, PalabraRespaldoDos);
-			iNumSugeridas++; 
-		}
-
-	}
 
 	
 	for (int a = 0; a <= longitud; a++) { 
