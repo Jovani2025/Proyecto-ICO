@@ -238,17 +238,16 @@ void	ClonaPalabras(
 
 	}
 
-	for (int i = 0; i < longitud - 1; i++) { 
-		char PalabraRespaldo[TAMTOKEN]; 
-		strcpy_s(PalabraRespaldo, TAMTOKEN, szPalabraLeida); 
-		
-		char auxCaracter;
-		auxCaracter = PalabraRespaldo[i]; 
-		PalabraRespaldo[i] = PalabraRespaldo[i + 1]; 
-		PalabraRespaldo[i + 1] = auxCaracter;
-		strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, PalabraRespaldo); 
-		iNumSugeridas++;
-	}
+for (int i = 0; i < longitud - 1; i++) {
+    char PalabraRespaldo[TAMTOKEN];
+    strcpy_s(PalabraRespaldo, TAMTOKEN, szPalabraLeida);
+
+    std::swap(PalabraRespaldo[i], PalabraRespaldo[i + 1]);
+
+    strcpy_s(szPalabrasSugeridas[iNumSugeridas], TAMTOKEN, PalabraRespaldo);
+    iNumSugeridas++;
+}
+
 
 	
 for (int k = 0; k < longitud_abecedario; k++) {
