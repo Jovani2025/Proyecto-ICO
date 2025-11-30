@@ -159,15 +159,16 @@ void	ListaCandidatas(
 {
 	
 iNumLista = 0;
-for (int c = 0; c < iNumElementos; c++) {
-    for (int paso = 0; paso < iNumSugeridas; paso++) {
-        if (strcmp(szPalabras[c], szPalabrasSugeridas[paso]) == 0) {
-            strcpy_s(szListaFinal[iNumLista], TAMTOKEN, szPalabras[c]);
+for (int paso = 0; paso < iNumSugeridas; paso++) {
+    for (int c = 0; c < iNumElementos; c++) {
+        if (strcmp(szPalabrasSugeridas[paso], szPalabras[c]) == 0) {
+            strcpy_s(szListaFinal[iNumLista], TAMTOKEN, szPalabrasSugeridas[paso]);
             iPeso[iNumLista] = iEstadisticas[c];
             iNumLista++;
-            break; // ya encontramos la sugerida en este elemento
+            break; // ya encontramos el elemento correspondiente
         }
     }
+  }
 }
 bool bNoOrdenado = true;
 
