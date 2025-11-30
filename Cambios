@@ -290,22 +290,20 @@ for (int k = 0; k < longitud_abecedario; k++) {
 	}
 	bool bNoOrdenado = true; 
 
-	for (int j = 0; j < iNumSugeridas && bNoOrdenado; j++) {
-		bNoOrdenado = false; 
+	for (int i = 0; i < iNumSugeridas - 1; i++) {
+    int minIdx = i;
+    for (int j = i + 1; j < iNumSugeridas; j++) {
+        if (strcmp(szPalabrasSugeridas[j], szPalabrasSugeridas[minIdx]) < 0) {
+            minIdx = j;
+        }
+    }
+    if (minIdx != i) {
+        char aux[TAMTOKEN];
+        strcpy_s(aux, TAMTOKEN, szPalabrasSugeridas[i]);
+        strcpy_s(szPalabrasSugeridas[i], TAMTOKEN, szPalabrasSugeridas[minIdx]);
+        strcpy_s(szPalabrasSugeridas[minIdx], TAMTOKEN, aux);
+    }
+}
+bool bNoOrdenado = false;
 
-		for (int k = 0; k < iNumSugeridas - 1; k++) {
-
-			if (strcmp(szPalabrasSugeridas[k], szPalabrasSugeridas[k + 1]) > 0) {
-				
-				char auxPalabrasSugeridas[TAMTOKEN];
-				strcpy_s(auxPalabrasSugeridas, TAMTOKEN, szPalabrasSugeridas[k]); 
-				strcpy_s(szPalabrasSugeridas[k], TAMTOKEN, szPalabrasSugeridas[k + 1]);
-				strcpy_s(szPalabrasSugeridas[k + 1], TAMTOKEN, auxPalabrasSugeridas);
-
-				bNoOrdenado = true;
-			}
-
-		}
-
-	}
 }
