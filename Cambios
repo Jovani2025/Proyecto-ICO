@@ -158,23 +158,19 @@ void	ListaCandidatas(
 	int& iNumLista)							//Numero de elementos en la szListaFinal
 {
 	
-	iNumLista = 0; 
-	for (int paso = 0; paso < iNumSugeridas; paso++) { 
+iNumLista = 0;
+for (int c = 0; c < iNumElementos; c++) {
+    for (int paso = 0; paso < iNumSugeridas; paso++) {
+        if (strcmp(szPalabras[c], szPalabrasSugeridas[paso]) == 0) {
+            strcpy_s(szListaFinal[iNumLista], TAMTOKEN, szPalabras[c]);
+            iPeso[iNumLista] = iEstadisticas[c];
+            iNumLista++;
+            break; // ya encontramos la sugerida en este elemento
+        }
+    }
+}
+bool bNoOrdenado = true;
 
-		for (int c = 0; c < iNumElementos; c++) { 
-
-			if (strcmp(szPalabrasSugeridas[paso], szPalabras[c]) == 0) { 
-				strcpy_s(szListaFinal[iNumLista], TAMTOKEN, szPalabrasSugeridas[paso]);
-				iPeso[iNumLista] = iEstadisticas[c];
-				iNumLista++; 
-				break;
-			}
-
-		}
-
-	}
-
-	bool bNoOrdenado = true; 
 
 	for (int j = 0; j < iNumLista && bNoOrdenado; j++) {
 		bNoOrdenado = false;
